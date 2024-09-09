@@ -1,0 +1,18 @@
+version: 2
+updates:
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "daily"
+          time: "12:45"
+
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "daily"
+          time: "12:45"
+      ignore:
+          - dependency-name: "@types/*"
+          - dependency-name: "@discordjs/*"
+          - dependency-name: "discord.js"
+          - dependency-name: "prettier"
