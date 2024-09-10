@@ -20,4 +20,3 @@ export type UndefinedDomain =
 	| ((...args: unknown[]) => unknown)
 	| (new (...args: unknown[]) => unknown)
 	| undefined;
-	
