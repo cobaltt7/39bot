@@ -36,7 +36,7 @@ jobs:
               id: commit
               uses: peter-evans/create-pull-request@v6.1.0
               with:
-                  token: ${{ secrets.TOKEN }} # TODO
+                  token: ${{ secrets.TOKEN }}
                   author:
                       github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
                   commit-message: Bump dependencies

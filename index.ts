@@ -1,4 +1,4 @@
-import { GatewayIntentBits } from "discord.js";
+import { ActivityType, GatewayIntentBits } from "discord.js";
 import mongoose from "mongoose";
 import dns from "node:dns";
 import { fileURLToPath } from "node:url";
@@ -35,4 +35,7 @@ await login({
 if (constants.env === "production")
 	await log(`${constants.emojis.miku} Restarted bot on version **v${pkg.version}**`);
 
-client.user.setStatus("online");
+client.user.setPresence({
+	status: "idle",
+	activities: [{ name: "custom status", state: "PUBLIC BETA", type: ActivityType.Custom }],
+});

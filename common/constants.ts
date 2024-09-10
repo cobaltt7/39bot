@@ -1,10 +1,15 @@
+const env =
+	process.argv.some((file) => file.endsWith(".test.js")) ? "testing"
+	: process.env.NODE_ENV === "production" ? "production"
+	: "development";
+
 export default {
 	collectorTime: 45_000,
 
 	channels: {
 		chat: "1265654803086704711",
 		updates: "1265655121828647066",
-		logs: "901225174974726177", //TODO: "897639265696112670",
+		logs: env === "development" ? "897639265696112670" : "901225174974726177",
 	},
 
 	emojis: {
@@ -18,15 +23,12 @@ export default {
 	},
 
 	footerSeperator: " • ",
-	env:
-		process.argv.some((file) => file.endsWith(".test.js")) ? "testing"
-		: process.env.NODE_ENV === "production" ? "production"
-		: "development",
+	env,
 
 	themeColor: 0x39_c5_bb,
 	triggerTime: 39,
 
-	users: { bot: "TODO" },
+	users: { bot: "1279619856890855505" },
 
 	webhookName: "39bot-webhook",
 	zws: "\u200B",
