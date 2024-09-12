@@ -23,7 +23,7 @@ defineEvent("messageCreate", async (message) => {
 		seconds * 1000 -
 		milliseconds;
 
-	if (minutes > constants.triggerTime && minutes <= constants.triggerTime + 5) {
+	if (minutes < constants.triggerTime || minutes > constants.triggerTime + 5) {
 		if (canReact) await message.react(constants.emojis.miku);
 		return;
 	}
