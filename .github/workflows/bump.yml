@@ -16,7 +16,8 @@ permissions: write-all
 jobs:
     bump:
         name: Bump
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
+        concurrency: deploy-group
 
         steps:
             - name: Checkout

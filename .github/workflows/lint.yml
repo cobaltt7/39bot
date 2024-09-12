@@ -9,7 +9,8 @@ permissions: write-all
 jobs:
     format:
         name: Format
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
+        concurrency: deploy-group
 
         steps:
             - name: Checkout
@@ -41,7 +42,7 @@ jobs:
 
     analyze:
         name: Analyze
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
 
         steps:
             - name: Checkout
@@ -61,7 +62,7 @@ jobs:
 
     build:
         name: Build & Test
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
 
         steps:
             - name: Checkout
