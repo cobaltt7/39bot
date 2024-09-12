@@ -9,7 +9,7 @@ export default {
 	channels: {
 		chat: "1265654803086704711",
 		updates: "1265655121828647066",
-		logs: env === "development" ? "897639265696112670" : "901225174974726177",
+		logs: env === "development" ? "901225174974726177" : "897639265696112670",
 	},
 
 	emojis: {

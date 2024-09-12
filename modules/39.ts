@@ -24,7 +24,7 @@ defineEvent("messageCreate", async (message) => {
 		milliseconds;
 
 	if (minutes > constants.triggerTime && minutes <= constants.triggerTime + 5) {
-		if (canReact) await message.react(constants.emojis.mikuSad);
+		if (canReact) await message.react(constants.emojis.miku);
 		return;
 	}
 
@@ -32,7 +32,7 @@ defineEvent("messageCreate", async (message) => {
 	if (minutes !== constants.triggerTime) {
 		if (last39?.hour === hour) {
 			if (last39.users.has(message.author.id)) {
-				if (canReact) await message.react(constants.emojis.mikuSad);
+				if (canReact) await message.react(constants.emojis.miku);
 				return;
 			} else last39.users.add(message.author.id);
 		}
