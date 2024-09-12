@@ -23,11 +23,18 @@ defineEvent("messageCreate", async (message) => {
 		seconds * 1000 -
 		milliseconds;
 
+	if (minutes > constants.triggerTime && minutes <= constants.triggerTime + 5) {
+		if (canReact) await message.react(constants.emojis.mikuSad);
+		return;
+	}
+
 	const last39 = await retriveLast39s({ hour, guild: message.guild.id });
 	if (minutes !== constants.triggerTime) {
 		if (last39?.hour === hour) {
-			if (last39.users.has(message.author.id)) return;
-			else last39.users.add(message.author.id);
+			if (last39.users.has(message.author.id)) {
+				if (canReact) await message.react(constants.emojis.mikuSad);
+				return;
+			} else last39.users.add(message.author.id);
 		}
 
 		if (canReact) await message.react(constants.emojis.mikuSad);
