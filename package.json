@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@redguy12/prettier-config": "3.0.2",
 		"@types/node": "<=20.10",
-		"nodemon": "3.1.4",
+		"nodemon": "3.1.5",
 		"prettier": "3.3.2",
 		"typescript": "5.4.5"
 	},
