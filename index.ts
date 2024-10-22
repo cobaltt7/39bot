@@ -2,10 +2,10 @@ import { ActivityType, GatewayIntentBits } from "discord.js";
 import mongoose from "mongoose";
 import dns from "node:dns";
 import { fileURLToPath } from "node:url";
-import { client, login } from "strife.js";
+import { client, login, logError } from "strife.js";
 import constants from "./common/constants.js";
 import pkg from "./package.json" assert { type: "json" };
-import log, { logError } from "./common/logging.js";
+import assert from "node:assert";
 
 dns.setDefaultResultOrder("ipv4first");
 
@@ -19,9 +19,7 @@ await mongoose.connect(process.env.MONGO_URI);
 
 await login({
 	modulesDirectory: fileURLToPath(new URL("./modules", import.meta.url)),
-	async handleError(error, event) {
-		await logError(error, event);
-	},
+	handleError: { channel: constants.channels.logs, emoji: constants.emojis.mikuSad },
 	clientOptions: {
 		intents:
 			GatewayIntentBits.Guilds |
@@ -32,10 +30,24 @@ await login({
 	commandErrorMessage: `${constants.emojis.mikuSad} An error occurred.`,
 });
 
-if (constants.env === "production")
-	await log(`${constants.emojis.miku} Restarted bot on version **v${pkg.version}**`);
+const channel = await client.channels.fetch(constants.channels.logs);
+assert(channel?.isTextBased());
+process
+	.on(
+		"uncaughtException",
+		async (error, event) =>
+			await logError({ error, event, channel, emoji: constants.emojis.mikuSad }),
+	)
+	.on(
+		"warning",
+		async (error) =>
+			await logError({ error, event: "warning", channel, emoji: constants.emojis.mikuSad }),
+);
 
 client.user.setPresence({
 	status: "idle",
 	activities: [{ name: "custom status", state: "PUBLIC BETA", type: ActivityType.Custom }],
 });
+
+if (constants.env === "production")
+	await channel.send(`${constants.emojis.miku} Restarted bot on version **v${pkg.version}**`);

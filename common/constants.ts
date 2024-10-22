@@ -22,14 +22,13 @@ export default {
 		mikuShy: "<:emoji:1280318715581300778>",
 	},
 
-	footerSeperator: " • ",
 	env,
 
+	testingServer: "901225174974726174",
 	themeColor: 0x39_c5_bb,
 	triggerTime: 39,
 
-	users: { bot: "1279619856890855505" },
-
-	webhookName: "39bot-webhook",
-	zws: "\u200B",
+	users: {
+		bot: "1279619856890855505",
+	},
 } as const;
