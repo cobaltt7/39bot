@@ -42,7 +42,7 @@ process
 		"warning",
 		async (error) =>
 			await logError({ error, event: "warning", channel, emoji: constants.emojis.mikuSad }),
-);
+	);
 
 client.user.setPresence({
 	status: "idle",
