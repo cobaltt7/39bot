@@ -1,7 +1,10 @@
+import type { Snowflake } from "discord.js";
+
+import { Collection } from "discord.js";
 import { client, defineEvent } from "strife.js";
-import constants from "../common/constants.js";
-import { ThirtyNine } from "../common/database.js";
-import { Collection, type Snowflake } from "discord.js";
+
+import constants from "../common/constants.ts";
+import { ThirtyNine } from "../common/database.ts";
 
 const _39Regex = /\b(?:39|thirty[ -]?nine)\b/i;
 

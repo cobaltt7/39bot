@@ -1,7 +1,8 @@
 import { defineChatCommand } from "strife.js";
-import credits from "./credits.js";
-import status from "./status.js";
-import constants from "../../common/constants.js";
+
+import constants from "../../common/constants.ts";
+import credits from "./credits.ts";
+import status from "./status.ts";
 
 if (constants.env === "production") {
 	defineChatCommand(

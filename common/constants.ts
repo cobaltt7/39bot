@@ -1,3 +1,5 @@
+import type { Snowflake } from "discord.js";
+
 const env =
 	process.argv.some((file) => file.endsWith(".test.js")) ? "testing"
 	: process.env.NODE_ENV === "production" ? "production"
@@ -20,7 +22,7 @@ export default {
 		mikus: "<:emoji:1280318914307559434>",
 		mikuSad: "<:emoji:1279939041630093424>",
 		mikuShy: "<:emoji:1280318715581300778>",
-	},
+	} satisfies Record<string, `<${"a" | ""}:emoji:${Snowflake}>`>,
 
 	env,
 

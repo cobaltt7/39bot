@@ -1,11 +1,13 @@
-import { ActivityType, GatewayIntentBits } from "discord.js";
-import mongoose from "mongoose";
+import assert from "node:assert";
 import dns from "node:dns";
 import { fileURLToPath } from "node:url";
-import { client, login, logError } from "strife.js";
-import constants from "./common/constants.js";
-import pkg from "./package.json" assert { type: "json" };
-import assert from "node:assert";
+
+import { ActivityType, GatewayIntentBits } from "discord.js";
+import mongoose from "mongoose";
+import { client, logError, login } from "strife.js";
+
+import constants from "./common/constants.ts";
+import pkg from "./package.json" with { type: "json" };
 
 dns.setDefaultResultOrder("ipv4first");
 
@@ -31,7 +33,7 @@ await login({
 });
 
 const channel = await client.channels.fetch(constants.channels.logs);
-assert(channel?.isTextBased());
+assert(channel?.isSendable());
 process
 	.on(
 		"uncaughtException",

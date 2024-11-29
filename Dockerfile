@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Install Node.js
-ARG NODE_VERSION=20.10.0
+ARG NODE_VERSION=22.10.0
 FROM node:${NODE_VERSION}-slim as base
 
 # Set up working directory
@@ -16,7 +16,7 @@ RUN npm ci --include=dev
 
 # Build TypeScript
 COPY --link . .
-RUN npm run build
+RUN node --run build
 
 # Remove development dependencies
 RUN npm prune --omit=dev
