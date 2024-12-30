@@ -18,12 +18,12 @@ defineChatCommand(
 	},
 	async (interaction, { user = interaction.user }) => {
 		const [stats] = await ThirtyNine.aggregate<{
-			madeCount: number;
-			missedCount: number;
-			doubleCount: number;
-			guildCount: number;
-			maxAtOnce: number;
-			soloCount: number;
+			madeCount?: number;
+			missedCount?: number;
+			doubleCount?: number;
+			guildCount?: number;
+			// maxAtOnce?: number;
+			// soloCount?: number;
 		}>()
 			.match({ user: user.id })
 			.facet({
@@ -47,18 +47,18 @@ defineChatCommand(
 					{ $group: { _id: "$guild" } },
 					{ $count: "count" },
 				],
-				solos: [
-					{ $match: { missed: false } },
-					{ $group: { _id: "$hour", count: { $sum: 1 } } },
-					{ $match: { count: 1 } },
-					{ $count: "count" },
-				],
-				maxAtOnce: [
-					{ $match: { missed: false } },
-					{ $group: { _id: "$hour", count: { $sum: 1 } } },
-					{ $sort: { count: -1 } },
-					{ $limit: 1 },
-				],
+				// solos: [
+				// 	{ $match: { missed: false } },
+				// 	{ $group: { _id: "$hour", count: { $sum: 1 } } },
+				// 	{ $match: { count: 1 } },
+				// 	{ $count: "count" },
+				// ],
+				// maxAtOnce: [
+				// 	{ $match: { missed: false } },
+				// 	{ $group: { _id: "$hour", count: { $sum: 1 } } },
+				// 	{ $sort: { count: -1 } },
+				// 	{ $limit: 1 },
+				// ],
 			})
 			.project({
 				madeCount: { $first: "$made.count" },
@@ -66,8 +66,8 @@ defineChatCommand(
 				missedCount: { $first: "$missed.count" },
 
 				guildCount: { $first: "$guilds.count" },
-				soloCount: { $first: "$solos.count" },
-				maxAtOnce: { $first: "$maxAtOnce.count" },
+				// soloCount: { $first: "$solos.count" },
+				// maxAtOnce: { $first: "$maxAtOnce.count" },
 			});
 
 		if (!stats) {
@@ -85,35 +85,35 @@ defineChatCommand(
 					fields: [
 						{
 							name: `${constants.emojis._39} Total 39s`,
-							value: stats.madeCount.toLocaleString(),
+							value: (stats.madeCount ?? 0).toLocaleString(),
 							inline: true,
 						},
 						{
 							name: `${constants.emojis.miku39} Double 39s`,
-							value: stats.doubleCount.toLocaleString(),
+							value: (stats.doubleCount ?? 0).toLocaleString(),
 							inline: true,
 						},
 						{
 							name: `${constants.emojis.mikuSad} Missed 39s`,
-							value: stats.missedCount.toLocaleString(),
+							value: (stats.missedCount ?? 0).toLocaleString(),
 							inline: true,
 						},
 
 						{
 							name: `${constants.emojis.mikuDual} Total 39 servers`,
-							value: stats.guildCount.toLocaleString(),
+							value: (stats.guildCount ?? 0).toLocaleString(),
 							inline: true,
 						},
-						{
-							name: `${constants.emojis.mikuShy} Solo 39s`,
-							value: stats.soloCount.toLocaleString(),
-							inline: true,
-						},
-						{
-							name: `${constants.emojis.mikus} Most 39s at once`,
-							value: stats.maxAtOnce.toLocaleString(),
-							inline: true,
-						},
+						// {
+						// 	name: `${constants.emojis.mikuShy} Solo 39s`,
+						// 	value: (stats.soloCount ?? 0).toLocaleString(),
+						// 	inline: true,
+						// },
+						// {
+						// 	name: `${constants.emojis.mikus} Most 39s at once`,
+						// 	value: (stats.maxAtOnce ?? 0).toLocaleString(),
+						// 	inline: true,
+						// },
 					],
 				},
 			],

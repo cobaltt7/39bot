@@ -1,6 +1,6 @@
 import type { APIEmbedField, ChatInputCommandInteraction, User } from "discord.js";
 
-import { inlineCode, Team } from "discord.js";
+import { inlineCode, Team, time, TimestampStyles } from "discord.js";
 import { client, columnize } from "strife.js";
 
 import constants from "../../common/constants.ts";
@@ -8,10 +8,53 @@ import pkg from "../../package.json" with { type: "json" };
 
 const dependencyColumns = await getDependencies();
 
-export default async function credits(interaction: ChatInputCommandInteraction): Promise<void> {
+export default async function info(interaction: ChatInputCommandInteraction): Promise<void> {
+	const message = await interaction.deferReply({ fetchReply: true });
 	const owner = getOwner();
-	await interaction.reply({
+	await interaction.editReply({
+		content: "",
+
 		embeds: [
+			{
+				title: "Status",
+				thumbnail: { url: client.user.displayAvatarURL() },
+				color: constants.themeColor,
+				description: `I’m open-source! The source code is available [on GitHub](https://github.com/cobaltt7/39bot).`,
+
+				fields: [
+					{
+						name: "⚙️ Mode",
+						value: inlineCode(constants.env),
+						inline: true,
+					},
+					{ name: "🔢 Version", value: `v${pkg.version}`, inline: true },
+					{
+						name: "🔁 Last restarted",
+						value: time(client.readyAt, TimestampStyles.RelativeTime),
+						inline: true,
+					},
+					{
+						name: "🏓 Ping",
+						value: `${Math.abs(
+							message.createdTimestamp - interaction.createdTimestamp,
+						).toLocaleString()}ms`,
+						inline: true,
+					},
+					{
+						name: "↕️ WebSocket latency",
+						value: `${Math.abs(client.ws.ping).toLocaleString()}ms`,
+						inline: true,
+					},
+					{
+						name: "💾 RAM usage",
+						value: `${(process.memoryUsage.rss() / 1_000_000).toLocaleString([], {
+							maximumFractionDigits: 2,
+							minimumFractionDigits: 2,
+						})} MB`,
+						inline: true,
+					},
+				],
+			},
 			{
 				title: "Credits",
 				description: `${client.user.displayName} is ${

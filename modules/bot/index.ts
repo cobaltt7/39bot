@@ -1,8 +1,7 @@
 import { defineChatCommand } from "strife.js";
 
 import constants from "../../common/constants.ts";
-import credits from "./credits.ts";
-import status from "./status.ts";
+import info from "./info.ts";
 
 if (constants.env === "production")
 	defineChatCommand(
@@ -34,10 +33,6 @@ else
 	);
 
 defineChatCommand(
-	{ name: "status", description: "See my current status information", access: true },
-	status,
-);
-defineChatCommand(
-	{ name: "credits", description: "List who and what allows me to work", access: true },
-	credits,
+	{ name: "info", description: "Show information about me and how I work", access: true },
+	info,
 );
