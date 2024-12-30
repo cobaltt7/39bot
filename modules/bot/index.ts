@@ -4,7 +4,7 @@ import constants from "../../common/constants.ts";
 import credits from "./credits.ts";
 import status from "./status.ts";
 
-if (constants.env === "production") {
+if (constants.env === "production")
 	defineChatCommand(
 		{
 			name: "restart",
@@ -18,7 +18,7 @@ if (constants.env === "production") {
 			process.exit(1);
 		},
 	);
-} else {
+else
 	defineChatCommand(
 		{
 			name: "kill",
@@ -32,7 +32,6 @@ if (constants.env === "production") {
 			process.exit(1);
 		},
 	);
-}
 
 defineChatCommand(
 	{ name: "status", description: "See my current status information", access: true },

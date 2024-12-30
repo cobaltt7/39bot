@@ -1,6 +1,6 @@
 {
 	"name": "39bot",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": true,
 	"homepage": "https://discord.gg/sDshq5eqUA",
 	"type": "module",
@@ -9,6 +9,7 @@
 		"build": "rm -rf ./dist && tsc --project tsconfig.json",
 		"dev": "tsc --project tsconfig.json --watch",
 		"format": "prettier --write \"**\" \"!./dist/\" --ignore-unknown --cache",
+		"lint": "eslint",
 		"serve": "nodemon --env-file .env --enable-source-maps . --ext js,json",
 		"start": "node --enable-source-maps .",
 		"test": "node --run build && node --enable-source-maps --test"
@@ -23,6 +24,8 @@
 		"@redguy12/prettier-config": "3.2.1",
 		"@total-typescript/ts-reset": "0.6.1",
 		"@types/node": "<=22.10",
+		"eslint": "9.17.0",
+		"eslint-config-cobaltt7": "1.0.0",
 		"nodemon": "3.1.9",
 		"prettier": "3.4.2",
 		"typescript": "5.7.2"
@@ -38,6 +41,6 @@
 		"@discordjs/rest": "2.4.1-dev.1732709129-97ffa201a",
 		"@discordjs/util": "1.1.2-dev.1732709129-97ffa201a",
 		"@discordjs/ws": "1.2.0-dev.1721822666-fcd35ea2e",
-		"discord-api-types": "next"
+		"discord-api-types": "0.37.106-next.7debb55.1732021051"
 	}
 }

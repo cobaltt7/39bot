@@ -15,7 +15,7 @@ export default async function credits(interaction: ChatInputCommandInteraction):
 			{
 				title: "Credits",
 				description: `${client.user.displayName} is ${
-					owner ? `maintained by ${owner} and ` : ""
+					owner ? `maintained by ${owner.toString()} and ` : ""
 				}hosted on [Fly](https://fly.io) using Node.JS ${process.version}.`,
 				fields: dependencyColumns,
 				color: constants.themeColor,
@@ -28,7 +28,7 @@ function getOwner(): User | undefined {
 	const { owner } = client.application;
 	if (!(owner instanceof Team)) return owner ?? undefined;
 
-	return (owner?.owner || owner?.members.first())?.user;
+	return (owner.owner ?? owner.members.first())?.user;
 }
 
 async function getDependencies(): Promise<APIEmbedField[]> {
