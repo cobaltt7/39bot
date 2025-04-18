@@ -30,7 +30,5 @@ export default {
 	themeColor: 0x39_c5_bb,
 	triggerTime: 39,
 
-	users: {
-		bot: "1279619856890855505",
-	},
+	users: { bot: "1279619856890855505" },
 } as const;

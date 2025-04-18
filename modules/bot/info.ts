@@ -22,11 +22,7 @@ export default async function info(interaction: ChatInputCommandInteraction): Pr
 				description: `I’m open-source! The source code is available [on GitHub](https://github.com/cobaltt7/39bot).`,
 
 				fields: [
-					{
-						name: "⚙️ Mode",
-						value: inlineCode(constants.env),
-						inline: true,
-					},
+					{ name: "⚙️ Mode", value: inlineCode(constants.env), inline: true },
 					{ name: "🔢 Version", value: `v${pkg.version}`, inline: true },
 					{
 						name: "🔁 Last restarted",

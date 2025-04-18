@@ -25,23 +25,10 @@ export default declareConfig(
 					format: ["camelCase", "PascalCase", "UPPER_CASE"],
 					selector: ["import", "variable"],
 				},
-				{
-					format: ["camelCase"],
-					selector: ["function", "method", "parameterProperty"],
-				},
-				{
-					format: ["camelCase"],
-					leadingUnderscore: "allow",
-					selector: "parameter",
-				},
-				{
-					format: ["camelCase", "UPPER_CASE"],
-					selector: "classProperty",
-				},
-				{
-					format: ["PascalCase"],
-					selector: ["enumMember", "typeLike"],
-				},
+				{ format: ["camelCase"], selector: ["function", "method", "parameterProperty"] },
+				{ format: ["camelCase"], leadingUnderscore: "allow", selector: "parameter" },
+				{ format: ["camelCase", "UPPER_CASE"], selector: "classProperty" },
+				{ format: ["PascalCase"], selector: ["enumMember", "typeLike"] },
 				{
 					custom: { match: false, regex: /^T[A-Z]/u.source },
 					format: ["PascalCase"],

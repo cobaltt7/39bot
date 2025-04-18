@@ -19,11 +19,11 @@ defineEvent("messageCreate", async (message) => {
 	const seconds = message.createdAt.getUTCSeconds();
 	const milliseconds = message.createdAt.getUTCMilliseconds();
 	const hour =
-		message.createdTimestamp -
-		((minutes < constants.triggerTime ? minutes + 60 : minutes) - constants.triggerTime) *
-			60_000 -
-		seconds * 1000 -
-		milliseconds;
+		message.createdTimestamp
+		- ((minutes < constants.triggerTime ? minutes + 60 : minutes) - constants.triggerTime)
+			* 60_000
+		- seconds * 1000
+		- milliseconds;
 
 	if (minutes < constants.triggerTime || minutes > constants.triggerTime + 5) {
 		if (canReact) await message.react(constants.emojis.miku);
