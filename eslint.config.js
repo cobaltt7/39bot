@@ -39,4 +39,8 @@ export default declareConfig(
 		},
 	},
 	{ files: ["./common/typedefs/**"], rules: { "unicorn/filename-case": "off" } },
+	{
+		files: ["./common/constants.ts"],
+		rules: { "sort-keys": ["error", "asc", { caseSensitive: false, natural: true }] },
+	},
 );
