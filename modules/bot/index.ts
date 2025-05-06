@@ -33,6 +33,6 @@ else
 	);
 
 defineChatCommand(
-	{ name: "info", description: "Show information about me and how I work", access: true },
+	{ name: "info", description: "Show information about me and how I work" },
 	info,
 );
