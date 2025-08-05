@@ -6,13 +6,13 @@ const env =
 	: "development";
 
 export default {
-	collectorTime: 45_000,
-
 	channels: {
 		chat: "1265654803086704711",
-		updates: "1265655121828647066",
 		logs: env === "development" ? "901225174974726177" : "897639265696112670",
+		updates: "1265655121828647066",
 	},
+
+	collectorTime: 45_000,
 
 	emojis: {
 		_39: "<:emoji:1279931403756240897>",

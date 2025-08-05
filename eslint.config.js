@@ -45,4 +45,3 @@ export default defineConfig(
 		rules: { "sort-keys": ["error", "asc", { caseSensitive: false, natural: true }] },
 	},
 );
-
