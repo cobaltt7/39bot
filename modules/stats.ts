@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType } from "discord.js";
+import { ApplicationCommandOptionType, MessageFlags } from "discord.js";
 import { defineChatCommand } from "strife.js";
 
 import constants from "../common/constants.js";
@@ -73,7 +73,7 @@ defineChatCommand(
 		if (!stats) {
 			await interaction.reply({
 				content: `${constants.emojis.mikuSad} No statistics found for ${user.toString()}`,
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 			return;
 		}
