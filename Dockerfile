@@ -1,8 +1,7 @@
 # syntax = docker/dockerfile:1.17.1@sha256:38387523653efa0039f8e1c89bb74a30504e76ee9f565e25c9a09841f9427b05
 
 # Install Node.js
-ARG NODE_VERSION=22.10.0
-FROM node:${NODE_VERSION}-slim AS base
+FROM node:22.10.0-slim AS base
 
 # Set up working directory
 LABEL fly_launch_runtime="Node.js"
