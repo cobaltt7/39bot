@@ -28,7 +28,7 @@ const PARTS = [
 	"0NWt8Pm",
 ] as const;
 
-defineChatCommand({ name: "bad-apple", description: "" }, async (interaction) => {
+defineChatCommand({ name: "bad-apple", description: "..." }, async (interaction) => {
 	const message = await interaction.reply(`https://i.imgur.com/${PARTS[0]}.gif`);
 	for (const part of PARTS.slice(1)) {
 		await sleep(GIF_LENGTH);
