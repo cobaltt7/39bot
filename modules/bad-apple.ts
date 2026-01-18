@@ -1,12 +1,6 @@
 import { setTimeout as sleep } from "node:timers/promises";
 
-
-
 import { defineChatCommand } from "strife.js";
-
-
-
-
 
 const GIF_LENGTH = 9900;
 const PARTS = [
