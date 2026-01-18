@@ -1,6 +1,12 @@
 import { setTimeout as sleep } from "node:timers/promises";
 
+
+
 import { defineChatCommand } from "strife.js";
+
+
+
+
 
 const GIF_LENGTH = 9900;
 const PARTS = [
@@ -33,7 +39,7 @@ defineChatCommand({ name: "bad-apple", description: "..." }, async (interaction)
 	for (const part of PARTS.slice(1)) {
 		await sleep(GIF_LENGTH);
 		try {
-			await message.edit(part);
+			await message.edit(`https://i.imgur.com/${part}.gif`);
 		} catch {
 			return;
 		}
